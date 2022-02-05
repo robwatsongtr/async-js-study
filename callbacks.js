@@ -21,18 +21,17 @@ function getPosts() {
     });
 
     document.body.innerHTML = output; // insert into DOM 
-  }, 2000);
+  }, 1000);
 }
 
-getPosts();
 
-const anotherPost = { title: 'Post three', body: 'this is post three yo' }
 
-function createPost(post) {
+function createPost(post, callback) {
   setTimeout( () => {
     posts.push(post);
+    callback();
   }, 2000)
 }
 
-createPost(anotherPost);
+createPost({ title: 'Post three', body: 'this is post three yo' }, getPosts);
 
